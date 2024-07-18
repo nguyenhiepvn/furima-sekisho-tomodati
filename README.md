@@ -6,12 +6,12 @@
 |--------------------|---------|---------------------------|
 | nickname           | string  | null: false               |
 | email              | string  | null: false, unique: true |
-| password           | string  | null: false               |
-| last-name          | string  | null: false               |
-| first-name         | string  | null: false               |
-| last-name-kana     | string  | null: false               |
-| first-name-kana    | string  | null: false               |
-| birth-date         | date    | null: false               |
+| encrypted_password | string  | null: false               |
+| first_name         | string  | null: false               |
+| last_name          | string  | null: false               |
+| first_name_kana    | string  | null: false               |
+| last_name_kana     | string  | null: false               |
+| birthday           | date    | null: false               |
 
 ### Association
 
@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column                   | Type       | Options                        |
-|--------------------------|------------|--------------------------------|
-| item-name                | string     | null: false                    |
-| item-info                | text       | null: false                    |
-| item-category            | integer    | null: false                    |
-| item-sales-status        | integer    | null: false                    |
-| item-shipping-fee-status | integer    | null: false                    |
-| item-prefecture          | integer    | null: false                    |
-| item-scheduled-delivery  | integer    | null: false                    |
-| item-price               | integer    | null: false                    |
-| user                     | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+|------------------|------------|--------------------------------|
+| name             | string     | null: false                    |
+| description      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| postage_payer_id | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| preparation_day_id| integer   | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -43,14 +43,8 @@
 
 | Column        | Type       | Options                        |
 |---------------|------------|--------------------------------|
-| postal-code   | string     | null: false                    |
-| prefecture    | integer    | null: false                    |
-| city          | string     | null: false                    |
-| addresses     | string     | null: false                    |
-| building      | string     |                                |
-| phone-number  | string     | null: false                    |
-| user-id       | references | null: false, foreign_key: true |
-| item-id       | references | null: false, foreign_key: true |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -76,13 +70,14 @@
 
 ## comments テーブル
 
-| Column  | Type       | Options                        |
-|---------|------------|--------------------------------|
-| content | text       | null: false                    |
-| item    | references | null: false, foreign_key: true |
-| user    | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+|---------------|------------|--------------------------------|
+| text          | text       | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+
