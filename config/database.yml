@@ -48,8 +48,9 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
 production:
-  <<: *default
-  database: furima_sekisho_TOMODATI_production
-  username: furima_sekisho_TOMODATI
-  password: <%= ENV["FURIMA_SEKISHO_TOMODATI_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: postgresql://furima_sekisho_tomodati_user:ad3LN4Hi2C53HePcwEAVh75f9qT39z9c@dpg-cqblnraju9rs73939cl0-a.oregon-postgres.render.com/furima_sekisho_tomodati
