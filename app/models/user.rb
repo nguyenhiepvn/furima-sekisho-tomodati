@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,13 +11,13 @@ class User < ApplicationRecord
   has_many :comments
 
   # バリデーション
-  validates :nickname,            presence: true
-  validates :email,               presence: true
-  validates :encrypted_password,  presence: true
-  validates :first_name,          presence: true
-  validates :last_name,           presence: true
-  validates :first_name_kana,     presence: true
-  validates :last_name_kana,      presence: true
-  validates :birthday,            presence: true
+  validates :nickname, presence: true
+  validates :password, presence: true, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/}, confirmation: true
+  validates :birthday, presence: true
+  validates :encrypted_password, presence: true
+  validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/}
+  validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/}
+  validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
+  validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
 
 end
