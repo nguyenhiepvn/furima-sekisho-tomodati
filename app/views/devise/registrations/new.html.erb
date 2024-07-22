@@ -1,6 +1,4 @@
 <%= render "devise/shared/second-header"%>
-
-<%# 「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/registrations#createへのパスを確認し、記載してください。 %>
 <%= form_with model: @user, data: { turbo: false }, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 
 <div class='form-wrap'>
@@ -10,14 +8,12 @@
     </h1>
   </div>
 
-  <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。 %>
   <div class='login-flash-message'>
     <%= flash[:notice] %>
     <%= flash[:alert] %>
   </div>
 
   <%= render 'devise/shared/error_messages', model: @user %>
-
 
   <div class="form-group">
     <div class='form-text-wrap'>
