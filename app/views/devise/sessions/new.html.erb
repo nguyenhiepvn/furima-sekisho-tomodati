@@ -1,16 +1,21 @@
 <%= render "devise/shared/second-header"%>
 
+<%# 「モデル名」にはUserモデルであれば@userを渡しましょう。「新規登録機能へのパス」は、devise導入後にrails routesを実行してdevise/sessions#createへのパスを確認し、記載してください。 %>
 <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
       会員情報入力
     </h1>
   </div>
+
+<%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
   <div class='login-flash-message'>
     <%= flash[:notice] %>
     <%= flash[:alert] %>
   </div>
+
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">メールアドレス</label>
@@ -18,6 +23,7 @@
     </div>
     <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
+
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">パスワード</label>
@@ -25,6 +31,7 @@
     </div>
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
   </div>
+
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"login-red-btn" %>
   </div>
