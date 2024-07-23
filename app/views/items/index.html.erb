@@ -1,4 +1,4 @@
-<%# render "shared/header" %>
+<%= render "shared/header" %>
 <div class='main'>
 
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
@@ -182,8 +182,8 @@
   </div>
   <%# /商品一覧 %>
 </div>
-<%= link_to('#', class: 'purchase-btn') do %>
+<%= link_to( items_new_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
-<%# render "shared/footer" %>
+<%= render "shared/footer" %>
