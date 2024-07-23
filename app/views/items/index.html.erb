@@ -185,9 +185,9 @@
     </ul>
   </div>
   <%# /商品一覧 %>
-  </div>
-  <%= link_to('#', class: 'purchase-btn') do %>
-    <span class='purchase-btn-text'>出品する</span>
-    <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-  <% end %>
-<%# render "shared/footer" %>
+</div>
+<%= link_to('#', class: 'purchase-btn') do %>
+  <span class='purchase-btn-text'>出品する</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+<%= render "devise/shared/footer" %>
