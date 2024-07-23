@@ -6,13 +6,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # アソシエーション
-  has_many :items
+
 
   # バリデーション
   validates :nickname, presence: true
-  validates :password, presence: true, format: { with: /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d]+\z/}, confirmation: true
+  validates :password, format: { with: /\A(?=.?[a-zA-Z])(?=.?\d)[a-zA-Z\d]+\z/}
   validates :birthday, presence: true
-  validates :encrypted_password, presence: true
   validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
   validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
   validates :last_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/}
