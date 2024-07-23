@@ -105,13 +105,13 @@ RSpec.describe User, type: :model do
       end
 
       it '姓（全角）に半角文字が含まれていると登録できない' do
-        @user.last_name = "さんぷㇽ"
+        @user.last_name = "sample"
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name is invalid")
       end
 
       it '名（全角）に半角文字が含まれていると登録できない' do
-        @user.first_name = "さんぷㇽ"
+        @user.first_name = "sample"
         @user.valid?
         expect(@user.errors.full_messages).to include("First name is invalid")
       end
