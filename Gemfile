@@ -55,6 +55,7 @@ group :development, :test do
   # Rspec gem
   gem 'rspec-rails', '~> 4.0.0'
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -85,3 +86,5 @@ gem 'devise'
 group :production do
   gem "pg"
 end
+
+gem 'pry-rails'
