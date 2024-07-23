@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   # バリデーション
   validates :nickname, presence: true
-  validates :password, format: { with: /\A(?=.?[a-zA-Z])(?=.?\d)[a-zA-Z\d]+\z/}
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
   validates :birthday, presence: true
   validates :last_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
   validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ }
