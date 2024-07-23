@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  # root "items#index"
-  root "items#show"
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defines the root path route ("/")
+  # root "articles#index"
+
+    devise_for :users, controllers: {
+      registrations: 'users/registrations'
+    }
+  
+  root "items#index"
+  resources :users
 
 end
