@@ -76,9 +76,9 @@ group :test do
 
 end
 
-group :development do
-  gem 'rubocop', require: false
-end
+# group :development do
+#   gem 'rubocop', require: false
+# end
 
 # Devise gem
 gem 'devise'
@@ -87,4 +87,10 @@ group :production do
   gem "pg"
 end
 
+gem 'active_hash'
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
+
 gem 'pry-rails'
+
