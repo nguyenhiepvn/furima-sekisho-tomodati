@@ -12,8 +12,6 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      @item.image= nil
-      
       render :new,locals:{item: @item}, status: :unprocessable_entity
     end
   end

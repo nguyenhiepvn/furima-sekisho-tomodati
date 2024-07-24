@@ -64,9 +64,5 @@ function checkForErrors() {
   const errorExplanation = document.getElementsByClassName("error-alert");
   if (errorExplanation) {
     clearPriceInfo();
-    // const priceInput = document.getElementById("item-price").value;
-    // if (priceInput) {
-    //   priceInput.value = '';
-    // }
   }
 }

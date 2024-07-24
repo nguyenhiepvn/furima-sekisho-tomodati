@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # アソシエーション
-
+  has_many :items
 
   # バリデーション
   validates :nickname, presence: true

@@ -23,6 +23,7 @@ class Item < ApplicationRecord
   validates :postage_payer_id, numericality: { other_than: 0 , message: "can't be blank"}
   validates :prefecture_id, numericality: { other_than: 0 , message: "can't be blank"}
   validates :preparation_day_id, numericality: { other_than: 0 , message: "can't be blank"}
-  
-  
+  validates :user, presence: true
+
+  belongs_to :user
 end
