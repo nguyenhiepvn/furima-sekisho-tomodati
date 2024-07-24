@@ -139,18 +139,20 @@
             <% end %>
         <% end %>
           <%# 商品が売れていればsold outを表示しましょう %>
+        <% if @items.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
+        <% end %>
           <%# //商品が売れていればsold outを表示しましょう %>
 
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= "商品名" %>
+            <%= item-name %>
           </h3>
           <div class='item-price'>
-            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
+            <span><%= "item-price" %>円<br><%= "item-postage" %></span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
@@ -169,6 +171,24 @@
         <div class='item-info'>
           <h3 class='item-name'>
             商品を出品してね！
+          </h3>
+          <div class='item-price'>
+            <span>99999999円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+
+      <li class='list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            サンプル２
           </h3>
           <div class='item-price'>
             <span>99999999円<br>(税込み)</span>

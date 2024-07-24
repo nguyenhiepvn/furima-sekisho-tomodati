@@ -20,12 +20,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_19_040721) do
     t.integer "prefecture_id", null: false
     t.integer "preparation_day_id", null: false
     t.integer "price", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
-end  
-  
-ActiveRecord::Schema[7.0].define(version: 2024_07_18_015757) do
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -43,4 +43,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_18_015757) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "items", "users"
 end
