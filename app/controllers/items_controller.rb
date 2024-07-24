@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def index
   end  # rubocop:disable Layout/TrailingWhitespace
   def new
@@ -18,6 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_day_id, :image)
+    params.require(:item).permit(:name, :description, :price, :category_id,
+                                 :condition_id, :postage_payer_id, :prefecture_id, :preparation_day_id, :image).merge(user_id: current_user.id)
   end
 end
