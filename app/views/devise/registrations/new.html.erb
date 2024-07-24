@@ -1,4 +1,4 @@
-<%= render "devise/shared/second-header"%>
+<%= render "shared/second-header"%>
 <%= form_with model: @user, data: { turbo: false }, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 
 <div class='form-wrap'>
@@ -13,7 +13,7 @@
     <%= flash[:alert] %>
   </div>
 
-  <%= render 'devise/shared/error_messages', model: @user %>
+  <%= render 'shared/error_messages', model: @user %>
 
   <div class="form-group">
     <div class='form-text-wrap'>
@@ -119,4 +119,4 @@
 </div>
 <% end %>
 
-<%= render "devise/shared/second-footer"%>
+<%= render "shared/second-footer"%>
