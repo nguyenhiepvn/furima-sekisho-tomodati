@@ -3,7 +3,7 @@
 <div class='main'>
 
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
-  <div class='title-contents'>
+  <div class='title-contents' style="background-image: url(<%= asset_path 'furima-header01.png' %>);">
     <h2 class='service-title'>
       人生を変えるフリマアプリ
     </h2>
@@ -63,7 +63,7 @@
   <%# /FURIMAが選ばれる3つの理由部分 %>
 
   <%# 画面中央の「会員数日本一位」帯部分 %>
-  <div class='ad-contents'>
+  <div class='ad-contents' style="background-image: url(<%= asset_path 'furima-header02.png' %>);">
     <h2 class='ad-title'>
       会員数日本一位
     </h2>
@@ -139,7 +139,7 @@
             <% end %>
         <% end %>
           <%# 商品が売れていればsold outを表示しましょう %>
-        <% if @items.present? %>
+        <% if @items.order %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
