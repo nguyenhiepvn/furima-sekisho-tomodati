@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   post 'items/new', to: 'items#create'
   get 'item/show/id', to:'item#show'
   resources :users
+  resources :items
     
 end
