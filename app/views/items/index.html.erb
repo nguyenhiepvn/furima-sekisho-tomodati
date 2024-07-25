@@ -150,10 +150,10 @@
 
            <div class='item-info'>
              <h3 class='item-name'>
-               <%= "商品名" %>
+               <%= item.name %>
              </h3>
              <div class='item-price'>
-               <span><%= "販売価格"%>円<br><%= '配送料負担'  %></span>
+               <span><%= item.price %>円<br><%= item.postage_payer.name  %></span>
                <div class='star-btn'>
                  <%= image_tag "star.png", class:"star-icon" %>
                  <span class='star-count'>0</span>
