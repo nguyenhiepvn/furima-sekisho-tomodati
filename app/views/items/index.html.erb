@@ -129,7 +129,8 @@
     <ul class='item-lists'>
 
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-     <% @items.each do |item| %>
+     <% if @items.present? %>
+       <% @items.each do |item| %>
          <li class='list'>
            <%= link_to item_path(item) do %>
              <div class='item-img-content'>
@@ -152,7 +153,7 @@
                <%= "商品名" %>
              </h3>
              <div class='item-price'>
-               <span><%= "販売価格" %>円<br><%='配送料負担' %></span>
+               <span><%= "販売価格"%>円<br><%= '配送料負担'  %></span>
                <div class='star-btn'>
                  <%= image_tag "star.png", class:"star-icon" %>
                  <span class='star-count'>0</span>
@@ -161,28 +162,31 @@
            </div>
          </li>
        <% end %>
-
+     <% else %>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
 
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
-      <li class='list'>
-        <%= link_to '#' do %>
-        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
-        <div class='item-info'>
-          <h3 class='item-name'>
-            商品を出品してね！
-          </h3>
-          <div class='item-price'>
-            <span>99999999円<br>(税込み)</span>
-            <div class='star-btn'>
-              <%= image_tag "star.png", class:"star-icon" %>
-              <span class='star-count'>0</span>
+        <li class='list'>
+          <%= link_to '#' do %>
+           <div class='item-img-content'>
+             <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+           </div>
+           <div class='item-info'>
+            <h3 class='item-name'>
+              商品を出品してね！
+            </h3>
+            <div class='item-price'>
+              <span>99999999円<br>(税込み)</span>
+              <div class='star-btn'>
+                <%= image_tag "star.png", class:"star-icon" %>
+                <span class='star-count'>0</span>
+              </div>
             </div>
           </div>
-        </div>
-        <% end %>
-      </li>
+          <% end %>
+        </li>
+      <% end %>  
       <%# //商品がある場合は表示されないようにしましょう %>
       <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
