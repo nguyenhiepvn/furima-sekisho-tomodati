@@ -9,7 +9,6 @@ a {
 /* 画面上部の「人生を変えるフリマアプリ」帯部分 */
 .title-contents {
   width: 100vw;
-  background-image: image-url('furima-header01.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -124,7 +123,6 @@ a {
 /* 画面中央の「会員数日本一位」帯部分*/
 .ad-contents {
   width: 100vw;
-  background-image: image-url('furima-header02.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
