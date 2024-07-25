@@ -1,4 +1,4 @@
-<%# <%= render "shared/header" %>
+<%= render "shared/header" %>
 
 <%# 商品の概要 %>
 <div class="item-show">
@@ -22,19 +22,15 @@
         <%= @item.postage_payer.name %>
       </span>
     </div>
-
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
-
-    <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
-    <p class="or-text">or</p>
-    <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
-
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-    <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
-
-
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
+    
+    <% if user_signed_in? && current_user.id == @item.user_id %>
+      <%= link_to "商品の編集", edit_item_path(@item), class: "item-red-btn" %>
+      <p class="or-text">or</p>
+      <%= link_to "削除", item_path(@item), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "item-destroy" %>
+    <% end %>
+    <% if user_signed_in? && current_user.id != @item.user_id %>
+      <%= link_to "購入画面に進む", new_order_path(item_id: @item.id), class: "item-red-btn" %>
+    <% end %>
 
     <div class="item-explain-box">
       <span><%= @item.description %></span>
@@ -106,4 +102,4 @@
   <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
-<%# <%= render "shared/footer" %> 
+<%= render "shared/footer" %> 

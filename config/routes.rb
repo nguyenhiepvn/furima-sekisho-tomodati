@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get 'items/new', to: 'items#new' 
   post 'items/new', to: 'items#create'
   resources :users
-  resources :items, only: [:index, :show, :new, :create]
+  resources :items
+  resources :orders, only: [:new, :create]  # 追加
 end
