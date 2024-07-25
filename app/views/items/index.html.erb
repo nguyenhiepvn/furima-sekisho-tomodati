@@ -120,7 +120,6 @@
   </div>
   <%# /FURIMAの特徴 %>
 
-  <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
     <div class="subtitle" >
@@ -128,7 +127,6 @@
     </div>
     <ul class='item-lists'>
 
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
      <% if @items.present? %>
        <% @items.each do |item| %>
          <li class='list'>
@@ -163,10 +161,6 @@
          </li>
        <% end %>
      <% else %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
         <li class='list'>
           <%= link_to '#' do %>
            <div class='item-img-content'>
@@ -187,11 +181,8 @@
           <% end %>
         </li>
       <% end %>  
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
     </ul>
   </div>
-  <%# /商品一覧 %>
 </div>
 <%= link_to( items_new_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>出品する</span>
