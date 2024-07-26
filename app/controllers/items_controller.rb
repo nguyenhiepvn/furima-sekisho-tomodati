@@ -24,6 +24,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+    if @item.user == current_user
+      @item.destroy
+      redirect_to root_path, notice: '商品が削除されました。'
+    end
+  end
+  
   private
   def item_params
     params.require(:item).permit(:name, :description, :price, :category_id, :condition_id, :postage_payer_id, :prefecture_id, :preparation_day_id, :image).merge(user_id: current_user.id)
