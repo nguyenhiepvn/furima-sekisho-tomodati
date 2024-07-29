@@ -8,5 +8,4 @@ Rails.application.routes.draw do
   post 'items/new', to: 'items#create'
   resources :users
   resources :items
-  resources :orders, only: [:new, :create]  # 追加
 end
