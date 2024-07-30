@@ -7,14 +7,14 @@
     </h1>
     <%# 購入内容の表示 %>
     <div class='buy-item-info'>
-      <%= image_tag "item-sample.png", class: 'buy-item-img' %>
-      <div class='buy-item-right-content'>
-        <h2 class='buy-item-text'>
-          <%= "商品名" %>
+       <%= image_tag @item.image.attached? ? url_for(@item.image) : "item-sample.png", class: 'buy-item-img' %>
+  <div class='buy-item-right-content'>
+    <h2 class='buy-item-text'>
+      <%= @item.name %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= '999,999,999' %></p>
-          <p class='item-price-sub-text'><%= '配送料負担' %></p>
+           <p class='item-price-text'>¥<%= @item.price.to_i %></p>
+      <p class='item-price-sub-text'><%= @item.postage_payer.name %></p>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
         支払金額
       </h1>
       <p class='item-payment-price'>
-        ¥<%= "販売価格" %>
+        ¥<%= @item.price.to_i %>
       </p>
     </div>
     <%# /支払額の表示 %>
