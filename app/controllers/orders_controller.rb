@@ -2,16 +2,20 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item
 
-  def new
+  def index
     @order = Order.new
   end
+
+  # def index
+  #   @order = Order.index
+  # end
   
   def create
     @order = Order.new(order_params)
     if @order.save
       redirect_to root_path, notice: '購入が完了しました。'
     else
-      render :new
+      render :index
     end
   end
  
