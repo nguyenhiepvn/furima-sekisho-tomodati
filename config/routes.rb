@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   post 'items/new', to: 'items#create'
   resources :users
   resources :items
+  get 'orders/new', to: 'orders#index'
+  post 'orders/new', to: 'orders#create'
   resources :orders, only: [:new, :create]
 end
