@@ -1,8 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
-  before_action :check_item_ownership, only: [:index, :create]
-  before_action :check_item_availability, only: [:index, :create]
+  before_action :check_item_accessibility, only: [:index, :create]
  
   def index
     @order = Order.new
@@ -15,30 +14,25 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.item_id = params[:item_id]
     @order.token = params[:token]
-    if @order.save
-      # 決済処理を行う
-      address_params = order_params[:address_attributes]
-      @address = @order.build_address(address_params)
-      if @address.save
-      pay_item
+    if @order.save && @order.build_address(order_params[:address_attributes]).save && pay_item
       redirect_to root_path, notice: '購入が完了しました'
-      end
     else
+      flash[:alert] = '決済処理に失敗しました'
       render :index
     end
   end
  
   private
 
-  def check_item_ownership
+  def check_item_accessibility
+    if user_signed_in?
     if @item.user == current_user
       redirect_to root_path, alert: '自分が出品した商品は購入できません。'
-    end
-  end
-
-  def check_item_availability
-    if @item.sold?
+      elsif @item.sold?
       redirect_to root_path, alert: 'この商品は売却済みです。'
+      end
+    else
+      redirect_to new_user_session_path, alert: 'ログインが必要です。'
     end
   end
  
