@@ -5,15 +5,22 @@ class OrdersController < ApplicationController
   def index
     @order = Order.new
     @order.build_address
-    gon.public_key = ENV['PAYJP_PUBLIC_KEY'] # Payjpの公開鍵をgonに設定
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY'] 
   end
  
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(order_params.except(:address_attributes))
+    @order.user_id = current_user.id
+    @order.item_id = params[:item_id]
+    @order.token = params[:token]
     if @order.save
       # 決済処理を行う
+      address_params = order_params[:address_attributes]
+      @address = @order.build_address(address_params)
+      if @address.save
       pay_item
       redirect_to root_path, notice: '購入が完了しました'
+      end
     else
       render :index
     end
@@ -30,6 +37,7 @@ class OrdersController < ApplicationController
   end
  
   def pay_item
+    begin
     # PayjpのAPIキーを設定
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
@@ -37,5 +45,10 @@ class OrdersController < ApplicationController
       card: order_params[:token], # カードトークン
       currency: 'jpy' # 日本円
     )
+    true
+    rescue Payjp::PayjpError => e
+      logger.error "Payment error: #{e.message}"
+      false
+    end
   end
 end

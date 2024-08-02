@@ -7,7 +7,6 @@ class Order < ApplicationRecord
   
   accepts_nested_attributes_for :address
   validate :buyer_is_not_seller
-  validates :address, presence: true
   validates :token, presence: true
 
   private

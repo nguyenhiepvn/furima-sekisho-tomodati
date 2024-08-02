@@ -1,6 +1,5 @@
 const pay = () => {
-  // PAY.JP インスタンスの作成
-  const payjp = Payjp('pk_test_cfd037bca15d148981029a70'); // PAY.JPテスト公開鍵
+  const payjp = Payjp('pk_test_cfd037bca15d148981029a70');
   const elements = payjp.elements();
   const numberElement = elements.create('cardNumber');
   const expiryElement = elements.create('cardExpiry');
@@ -18,8 +17,7 @@ const pay = () => {
 
       // デフォルトの送信動作をキャンセル
       e.preventDefault();
-
-      payjp.createToken(numberElement).then(function (response) {
+      payjp.createToken(numberElement).then((response) => {
         if (response.error) {
           // エラーハンドリング
           console.error('Token creation error:', response.error);
@@ -41,7 +39,7 @@ const pay = () => {
           // フォームを再送信
           form.submit();
         }
-      }).catch(function (error) {
+      }).catch((error) => {
         console.error('Token creation failed:', error);
         alert('トークンの作成に失敗しました。');
       });
