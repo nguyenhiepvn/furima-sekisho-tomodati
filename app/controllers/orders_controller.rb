@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
+  before_action :check_item_ownership, only: [:index, :create]
+  before_action :check_item_availability, only: [:index, :create]
  
   def index
     @order = Order.new
@@ -27,6 +29,18 @@ class OrdersController < ApplicationController
   end
  
   private
+
+  def check_item_ownership
+    if @item.user == current_user
+      redirect_to root_path, alert: '自分が出品した商品は購入できません。'
+    end
+  end
+
+  def check_item_availability
+    if @item.sold?
+      redirect_to root_path, alert: 'この商品は売却済みです。'
+    end
+  end
  
   def order_params
     params.require(:order).permit(:item_id, address_attributes: [:postal_code, :prefecture_id, :city, :address, :building, :phone_number]).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
