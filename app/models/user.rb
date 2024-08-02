@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   # アソシエーション
   has_many :items
+  has_one :card, dependent: :destroy
 
   # バリデーション
   validates :nickname, presence: true
