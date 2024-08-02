@@ -14,6 +14,7 @@ class OrdersController < ApplicationController
     @order.user_id = current_user.id
     @order.item_id = params[:item_id]
     @order.token = params[:token]
+
     if @order.save && @order.build_address(order_params[:address_attributes]).save && pay_item
       redirect_to root_path, notice: '購入が完了しました'
     else
@@ -26,7 +27,7 @@ class OrdersController < ApplicationController
 
   def check_item_accessibility
     if user_signed_in?
-    if @item.user == current_user
+      if @item.user == current_user
       redirect_to root_path, alert: '自分が出品した商品は購入できません。'
       elsif @item.sold?
       redirect_to root_path, alert: 'この商品は売却済みです。'
