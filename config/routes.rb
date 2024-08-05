@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'items/new', to: 'items#new' 
   post 'items/new', to: 'items#create'
   resources :users
-  resources :items
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
   resources :orders, only: [:new, :create]
 end
