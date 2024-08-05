@@ -26,8 +26,14 @@ class ItemsController < ApplicationController
 
   def search
     @q = Item.ransack(params[:q])
-    @items = @q.result
+    
+    if params[:q].present? && params[:q].values.any?(&:present?)
+      @items = @q.result
+    else
+      @items = [] # 検索クエリが空の場合は空の配列を設定
+    end
   end
+  
   
   def new
     @item = Item.new
