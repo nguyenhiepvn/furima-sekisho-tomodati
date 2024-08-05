@@ -18,11 +18,11 @@ class Item < ApplicationRecord
     greater_than_or_equal_to: 300, 
     less_than_or_equal_to: 9_999_999 
   }
-  validates :category_id,  numericality: { other_than: 0 , message: "can't be blank"}
-  validates :condition_id, numericality: { other_than: 0 , message: "can't be blank"}
-  validates :postage_payer_id, numericality: { other_than: 0 , message: "can't be blank"}
-  validates :prefecture_id, numericality: { other_than: 0 , message: "can't be blank"}
-  validates :preparation_day_id, numericality: { other_than: 0 , message: "can't be blank"}
+  validates :category_id,  numericality: { other_than: 0 }
+  validates :condition_id, numericality: { other_than: 0 }
+  validates :postage_payer_id, numericality: { other_than: 0 }
+  validates :prefecture_id, numericality: { other_than: 0 }
+  validates :preparation_day_id, numericality: { other_than: 0 }
   validates :user, presence: true
 
   belongs_to :user
