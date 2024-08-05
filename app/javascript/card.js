@@ -9,29 +9,30 @@ const pay = () => {
   numberElement.mount('#number-form');
   expiryElement.mount('#expiry-form');
   cvcElement.mount('#cvc-form');
+
   const form = document.getElementById('charge-form');
+  const errorMessageElement = document.getElementById('error-message'); // エラーメッセージ要素を取得
 
   if (form) {
-    // フォーム送信時の処理
     form.addEventListener("submit", (e) => {
-
-      // デフォルトの送信動作をキャンセル
       e.preventDefault();
+
       payjp.createToken(numberElement).then((response) => {
         if (response.error) {
-          // エラーハンドリング
           console.error('Token creation error:', response.error);
-          alert(response.error.message); 
+          // エラーメッセージを表示する
+          if (errorMessageElement) {
+            errorMessageElement.textContent = `エラー: ${response.error.message}`;
+            errorMessageElement.style.display = 'block'; // エラーメッセージを表示
+          }
         } else {
-           // トークンが成功して取得できた場合
           const token = response.id;
           const tokenInput = document.createElement('input');
           tokenInput.setAttribute('type', 'hidden');
           tokenInput.setAttribute('name', 'token');
           tokenInput.setAttribute('value', token);
           form.appendChild(tokenInput);
-          
-          // クレジットカード情報のフィールドを空にする
+
           numberElement.clear();
           expiryElement.clear();
           cvcElement.clear();
@@ -41,13 +42,18 @@ const pay = () => {
         }
       }).catch((error) => {
         console.error('Token creation failed:', error);
-        alert('トークンの作成に失敗しました。');
+        if (errorMessageElement) {
+          errorMessageElement.textContent = 'トークンの作成中に予期しないエラーが発生しました。再度お試しください。';
+          errorMessageElement.style.display = 'block'; // エラーメッセージを表示
+        }
       });
     });
   } else {
-    
-    // フォームが見つからない場合
     console.error('Form element not found');
+    if (errorMessageElement) {
+      errorMessageElement.textContent = 'フォームが見つかりませんでした。';
+      errorMessageElement.style.display = 'block'; // エラーメッセージを表示
+    }
   }
 };
 
