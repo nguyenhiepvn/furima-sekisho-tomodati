@@ -23,6 +23,11 @@ class ItemsController < ApplicationController
       render :edit , status: :unprocessable_entity
     end
   end
+
+  def search
+    @q = Item.ransack(params[:q])
+    @items = @q.result
+  end
   
   def new
     @item = Item.new
