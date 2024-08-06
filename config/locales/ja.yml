@@ -30,9 +30,9 @@ ja:
         invalid: "は無効です"
         too_short: "は%{count}文字以上で入力してください"
         other_than: "を選んでください"
-        greater_than_or_equal_to: "価値は300円から9,999,999円の範囲です"
+        greater_than_or_equal_to: "は300円から9,999,999円の範囲です"
         not_a_number: "が数値ではありません"
-        less_than_or_equal_to: "価値は300円から9,999,999円の範囲です"
+        less_than_or_equal_to: "は300円から9,999,999円の範囲です"
   devise:
     confirmations:
       confirmed: 'アカウントを登録しました。'
