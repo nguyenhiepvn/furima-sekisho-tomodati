@@ -121,6 +121,24 @@
   margin-right: 5px;
 }
 
+.like-btn {
+  border-radius: 40px;
+  width: 15vw;
+  min-width: 200px;
+  color: rgb(249, 75, 0);
+  border: 2px solid #FF83FF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  padding: 1vh 0;
+}
+
+.like-heart-btn {
+  margin-right: 5px;
+
+}
+
 .report-btn {
   border-radius: 40px;
   width: 15vw;
