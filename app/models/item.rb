@@ -40,4 +40,5 @@ class Item < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[category condition image_attachment image_blob postage_payer prefecture preparation_day user]
   end
+
 end
