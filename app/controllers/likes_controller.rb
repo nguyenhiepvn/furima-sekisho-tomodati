@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-  before_action :set_item
 
   def create
     like = current_user.likes.build(item_id: params[:item_id])
@@ -17,7 +16,4 @@ class LikesController < ApplicationController
     end
   end
 
-  def set_item
-    @item = Item.find(params[:item_id])
-  end
 end
