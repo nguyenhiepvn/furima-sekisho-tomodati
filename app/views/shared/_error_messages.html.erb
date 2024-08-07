@@ -1,4 +1,4 @@
-<% if model.errors.any? %>
+<% if model && model.errors.any? %>
 <div class="error-alert">
   <ul>
     <% model.errors.full_messages.each do |message| %>

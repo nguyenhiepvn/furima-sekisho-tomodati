@@ -34,9 +34,9 @@
       <%= flash[:alert] %>
     </div>
 
-     <%= render 'shared/error_messages', model: @item %>
-    
-    <%= form_with(model: [@item, @order], url: item_orders_path(item_id: @item.id), id: 'charge-form', class: 'transaction-form-wrap', local: true) do |f| %>
+  
+    <%= form_with(model: @order_address, url: item_orders_path(item_id: @item.id), id: 'charge-form', class: 'transaction-form-wrap', local: true) do |f| %>
+     <%= render 'shared/error_messages', model: @order_address %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
@@ -48,6 +48,7 @@
           <label class="form-text">カード情報</label>
           <span class="indispensable">必須</span>
           </div>
+          
           <div id="number-form" class="input-default"></div>
           
           <div class='available-card'>
@@ -80,52 +81,50 @@
       <h1 class='info-input-haedline'>
         配送先入力
       </h1>
-      
-        <%= f.fields_for :address do |af| %>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">郵便番号</label>
           <span class="indispensable">必須</span>
         </div>
-            <%= af.text_field :postal_code, class:"input-default", id:"postal-code", placeholder:"例）123-4567", maxlength:"8" %>
+          <%= f.text_field :postal_code, class: "input-default", id: "postal-code", placeholder: "例）123-4567", maxlength: "8" %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-            <%= af.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: "select-box", id: "item-prefecture"} %>
+            <%= f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, {class: "select-box", id: "item-prefecture"} %>
         </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">市区町村</label>
           <span class="indispensable">必須</span>
         </div>
-            <%= af.text_field :city, class:"input-default", id:"city", placeholder:"例）横浜市緑区"%>
+          <%= f.text_field :city, class: "input-default", id: "city", placeholder: "例）横浜市緑区" %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">番地</label>
           <span class="indispensable">必須</span>
         </div>
-            <%= af.text_field :address, class: "input-default", id: "address", placeholder: "例）青山1-1-1" %>
+            <%= f.text_field :address, class: "input-default", id: "address", placeholder: "例）青山1-1-1" %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">建物名</label>
           <span class="form-any">任意</span>
         </div>
-            <%= af.text_field :building, class:"input-default", id:"building", placeholder:"例）柳ビル103"%>
+          <%= f.text_field :building, class: "input-default", id: "building", placeholder: "例）柳ビル103" %>
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
           <label class="form-text">電話番号</label>
           <span class="indispensable">必須</span>
         </div>
-            <%= af.text_field :phone_number, class:"input-default", id:"phone-number", placeholder:"例）09012345678", maxlength:"11"%>
+          <%= f.text_field :phone_number, class: "input-default", id: "phone-number", placeholder: "例）09012345678" %>
+        </div>
       </div>
-        <% end %>
-    </div>
+ 
     <%# /配送先の入力 %>
     <div class='buy-btn'>
       <%= f.submit "購入", data: { turbo: false }, class: "buy-red-btn", id: "button" %>
@@ -133,5 +132,4 @@
     <% end %>
   </div>
 </div>
-
 <%= render "shared/second-footer" %> 
