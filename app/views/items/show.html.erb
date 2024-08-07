@@ -66,14 +66,6 @@
       </tbody>
     </table>
     <div class="option">
-<% if user_signed_in? %>
-      <div id="like-btn<%= @item.id %>">
-        <div class="like-btn">
-          <%= image_tag "heart.png", class: "like-heart-btn", width: "35", height: "35" %>
-          <%= render partial: "likes/like", locals: { item: @item } %>
-        </div>
-      </div>
-<% end %>
       <div class="favorite-btn">
         <%= image_tag "star.png", class: "favorite-star-icon", width: "20", height: "20" %>
         <span>お気に入り 0</span>
