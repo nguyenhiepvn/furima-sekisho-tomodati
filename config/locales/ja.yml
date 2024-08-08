@@ -21,28 +21,14 @@ ja:
         postage_payer_id: "配送料の負担"
         prefecture_id: "発送元の地域"
         preparation_day_id: "発送までの日数"
-      order:
-        token: "トーケン"
-        postal_code: "郵便番号"
-        prefecture_id: "都道府県"
-        city: "市区町村"
-        address: "住所"
-        building: "建物名"
-        phone_number: "電話番号"
-      address:
-        token: "トーケン"
-        postal_code: "郵便番号"
-        prefecture_id: "都道府県"
-        city: "市区町村"
-        address: "住所"
-        building: "建物名"
-        phone_number: "電話番号"
+  activemodel:
+    attributes:
       order_address:
         token: "トーケン"
         postal_code: "郵便番号"
         prefecture_id: "都道府県"
         city: "市区町村"
-        address: "住所"
+        address: "番地"
         building: "建物名"
         phone_number: "電話番号"
     errors:
