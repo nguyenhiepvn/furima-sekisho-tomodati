@@ -332,6 +332,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   gon
+  i18n
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

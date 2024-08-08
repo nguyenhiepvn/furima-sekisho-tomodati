@@ -6,15 +6,12 @@ Rails.application.routes.draw do
   root "items#index"
   get 'items/new', to: 'items#new' 
   post 'items/new', to: 'items#create'
+  resources :users
   resources :items do
-
-    resources :orders, only: [:index, :create, :new]
-    resources :cards, only: [:new, :create]
+    resources :orders, only: [:index, :create]
     collection do
       get 'search'
     end
     resources :likes, only: [:create, :destroy]
   end
-   resources :users
-
 end
