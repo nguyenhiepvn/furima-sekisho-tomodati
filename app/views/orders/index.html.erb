@@ -36,8 +36,10 @@
 
   
     <%= form_with(model: @order_address, url: item_orders_path(item_id: @item.id), id: 'charge-form', class: 'transaction-form-wrap', local: true) do |f| %>
-     <%= render 'shared/error_messages', model: @order_address %>
-
+     
+      <div style="margin-left: 200px;">
+        <%= render 'shared/error_messages', model: @order_address %>
+      </div>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
         クレジットカード情報入力
