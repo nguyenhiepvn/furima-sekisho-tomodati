@@ -9,5 +9,6 @@ FactoryBot.define do
     first_name            {'さんぷる'}
     last_name_kana        {'サンプル'}
     first_name_kana       {'サンプル'}
+    
   end
 end
