@@ -26,4 +26,10 @@ class Item < ApplicationRecord
   validates :user, presence: true
 
   belongs_to :user
+  has_many :orders
+
+  def sold?
+    # 例えば、アイテムが注文された場合は売却済みとする
+    Order.where(item_id: self.id).exists?
+  end
 end
