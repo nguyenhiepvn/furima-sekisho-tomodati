@@ -1,0 +1,5 @@
+<% if user_signed_in? && @item.liked_by?(current_user)%>
+  <%=link_to "いいね済", item_like_path(@item.id),  data: { turbo_method: :delete }, class: "item_likes",  remote: true %>
+<% else %>
+  <%=link_to "いいねする", item_likes_path(@item.id), data: { turbo_method: :post }, class: "item_likes", remote: true %>
+<% end %>

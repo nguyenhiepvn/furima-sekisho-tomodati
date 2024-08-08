@@ -6,6 +6,6 @@ FactoryBot.define do
     address { "番地0-0-0" }
     building { "建物名" }
     phone_number { "00000000000" }
-    # order { nil }
+    association :order
   end
 end
