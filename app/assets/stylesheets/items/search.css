@@ -1,0 +1,32 @@
+.item-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap; /* アイテムが画面幅を超えた場合に折り返す */
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  border: 1px solid #ddd; /* 境界線を追加してアイテムを区切り */
+  padding: 10px;
+  border-radius: 8px; /* 角を丸める */
+}
+
+.item-image {
+  width: 33vh;
+  height: 33vh;
+  object-fit: cover; /* 画像のアスペクト比を保ちながらサイズを調整 */
+  margin-right: 20px; /* 画像と情報の間にスペースを追加 */
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}

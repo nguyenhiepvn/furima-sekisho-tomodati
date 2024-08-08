@@ -96,7 +96,10 @@ gem 'image_processing', '~> 1.2'
 
 gem 'pry-rails'
 
+
 gem 'i18n'
 
 gem 'payjp'
 gem 'gon'
+
+gem 'ransack'
