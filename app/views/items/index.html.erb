@@ -126,26 +126,23 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-
-     <% if @items.present? %>
-       <% @items.each do |item| %>
-         <li class='list'>
-           <%= link_to item_path(item) do %>
-             <div class='item-img-content'>
-               <% if item.image.present? %>
-                 <%= image_tag item.image, class: "item-img" %>
-               <% else %>
-                 <%= image_tag "default_image.jpg", class: "item-img" %>
-               <% end %>
-             </div>
-           <% end %>
-
-           <%# 商品が売れていればsold outを表示しましょう %>
-           <%# <div class='sold-out'>
-             <span>Sold Out!!</span>
-           </div> %>
-           <%# //商品が売れていればsold outを表示しましょう %>
-
+    <% if @items.present? %>
+      <% @items.each do |item| %>
+        <li class='list'>
+          <%= link_to item_path(item) do %>
+            <div class='item-img-content'>
+              <% if item.image.present? %>
+                <%= image_tag item.image, class: "item-img" %>
+              <% else %>
+                <%= image_tag "default_image.jpg", class: "item-img" %>
+              <% end %>
+              <% if item.orders.present? %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div>
+              <% end %>
+            </div>
+      <% end %>
            <div class='item-info'>
              <h3 class='item-name'>
                <%= item.name %>
@@ -160,7 +157,7 @@
            </div>
          </li>
        <% end %>
-     <% else %>
+    <% else %>
         <li class='list'>
           <%= link_to '#' do %>
            <div class='item-img-content'>
