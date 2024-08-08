@@ -7,7 +7,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with(model: @item,url: items_new_path, local: true) do |f| %>
     <%= render 'shared/error_messages', model: @item %>
-    <%# 商品画像 %>
+
     <div class="img-upload">
       <div class="weight-bold-text">
         商品画像
@@ -20,8 +20,7 @@
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
-    <%# /商品画像 %>
-    <%# 商品名と商品説明 %>
+
     <div class="new-items">
       <div class="weight-bold-text">
         商品名
@@ -36,8 +35,7 @@
         <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"商品の説明（必須 1,000文字まで）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
-    <%# /商品名と商品説明 %>
-    <%# 商品の詳細 %>
+
     <div class="items-detail">
       <div class="weight-bold-text">商品の詳細</div>
       <div class="form">
@@ -53,8 +51,7 @@
         <%= f.collection_select :condition_id, Condition.all, :id, :name, {}, {class: "select-box", id: "item-sales-status"} %>
       </div>
     </div>
-    <%# /商品の詳細 %>
-    <%# 配送について %>
+
     <div class="items-detail">
       <div class="weight-bold-text question-text">
         <span>配送について</span>
@@ -78,8 +75,7 @@
         <%= f.collection_select :preparation_day_id, PreparationDay.all, :id, :name, {}, {class: "select-box", id: "item-scheduled-delivery"} %>
       </div>
     </div>
-    <%# /配送について %>
-    <%# 販売価格 %>
+
     <div class="sell-price">
       <div class="weight-bold-text question-text">
         <span>販売価格<br>(¥300〜9,999,999)</span>
@@ -108,8 +104,7 @@
         </div>
       </div>
     </div>
-    <%# /販売価格 %>
-    <%# 注意書き %>
+
     <div class="caution">
       <p class="sentence">
         <a href="#">禁止されている出品、</a>
@@ -127,13 +122,12 @@
         に同意したことになります。
       </p>
     </div>
-    <%# /注意書き %>
-    <%# 下部ボタン %>
+
     <div class="sell-btn-contents">
       <%= f.submit "出品する" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
-    <%# /下部ボタン %>
+
   </div>
   <% end %>
 
