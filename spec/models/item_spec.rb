@@ -43,13 +43,13 @@ RSpec.describe Item, type: :model do
       it '価格が300未満では出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("価格 価値は300円から9,999,999円の範囲です")
+        expect(@item.errors.full_messages).to include("価格 は300円から9,999,999円の範囲です")
       end
 
       it '価格が10000000以上では出品できない' do
         @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("価格 価値は300円から9,999,999円の範囲です")
+        expect(@item.errors.full_messages).to include("価格 は300円から9,999,999円の範囲です")
       end
 
       it '価格が半角数字でなければ出品できない' do

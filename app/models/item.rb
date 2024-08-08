@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   validates :user, presence: true
 
   belongs_to :user
-  has_many :orders
+  has_one :order
 
   def sold?
     # 例えば、アイテムが注文された場合は売却済みとする
@@ -47,6 +47,5 @@ class Item < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[category condition image_attachment image_blob postage_payer prefecture preparation_day user]
   end
-
 
 end

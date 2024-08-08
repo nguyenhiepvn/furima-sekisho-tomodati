@@ -1,4 +1,24 @@
 ja:
+  activemodel:
+    attributes:
+      order_address:
+        token: "トーケン"
+        postal_code: "郵便番号"
+        prefecture_id: "都道府県"
+        city: "市区町村"
+        address: "番地"
+        building: "建物名"
+        phone_number: "電話番号"
+        user_id: "ユーザー"
+        item_id: "商品"
+    errors:
+      models:
+        order_address:
+          attributes:
+            user_id:
+              blank: "を入力してください"
+            item_id:
+              blank: "を入力してください"
   activerecord:
     attributes:
       user:
@@ -21,16 +41,6 @@ ja:
         postage_payer_id: "配送料の負担"
         prefecture_id: "発送元の地域"
         preparation_day_id: "発送までの日数"
-  activemodel:
-    attributes:
-      order_address:
-        token: "トーケン"
-        postal_code: "郵便番号"
-        prefecture_id: "都道府県"
-        city: "市区町村"
-        address: "番地"
-        building: "建物名"
-        phone_number: "電話番号"
     errors:
       format: "%{attribute} %{message}"
       messages:

@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema[7.0].define(version: 2024_08_06_072229) do
-
   create_table "active_storage_attachments", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -109,10 +107,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_06_072229) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "orders"
   add_foreign_key "items", "users"
-
   add_foreign_key "likes", "items"
   add_foreign_key "likes", "users"
-
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
 end
