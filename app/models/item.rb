@@ -34,6 +34,12 @@ class Item < ApplicationRecord
   end
 
 
+  has_many :likes
+
+  def liked_by?(user)
+    likes.where(user_id: user.id).exists?
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     %w[category_id condition_id created_at description id name postage_payer_id prefecture_id preparation_day_id price updated_at user_id]
   end
