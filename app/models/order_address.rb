@@ -3,15 +3,15 @@ class OrderAddress
   attr_accessor :item_id, :user_id, :token, :postal_code, :prefecture_id, :city, :address, :building, :phone_number
  
   # バリデーション
-    validates :token, presence: { message: "can't be blank" }
-    validates :postal_code, presence: { message: "can't be blank" }
-    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "is invalid. Enter it as follows (e.g. 123-4567)" }
-    validates :prefecture_id, numericality: {  other_than: 0, message: "can't be blank" }
-    validates :city, presence: { message: "can't be blank" }
-    validates :address, presence: { message: "can't be blank" }
-    validates :phone_number, presence: { message: "can't be blank" }
-    validates :phone_number, length: { minimum: 10, maximum: 11, message: "is too short" }
-    validates :phone_number, format: { with: /\A\d+\z/, message: "is invalid. Input only number" }
+    validates :token, presence: { message: "を入力してください" }
+    validates :postal_code, presence: { message: "を入力してください" }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/, message: "無効です。次のように入力してください【例：123-4567】" }
+    validates :prefecture_id, numericality: {  other_than: 0, message: "を入力してください" }
+    validates :city, presence: { message: "を入力してください" }
+    validates :address, presence: { message: "を入力してください" }
+    validates :phone_number, presence: { message: "を入力してください" }
+    validates :phone_number, length: { minimum: 10, maximum: 11, message: "短すぎます" }
+    validates :phone_number, format: { with: /\A\d+\z/, message: "無効です。数字のみ入力してください" }
  
   # データを保存する処理
   def save
