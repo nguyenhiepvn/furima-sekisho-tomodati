@@ -130,7 +130,7 @@
               <% else %>
                 <%= image_tag "default_image.jpg", class: "item-img" %>
               <% end %>
-              <% if item.orders.present? %>
+              <% if item.order.present? %>
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
                 </div>

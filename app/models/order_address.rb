@@ -12,6 +12,8 @@ class OrderAddress
     validates :phone_number, presence: { message: "can't be blank" }
     validates :phone_number, length: { minimum: 10, maximum: 11, message: "is too short" }
     validates :phone_number, format: { with: /\A\d+\z/, message: "is invalid. Input only number" }
+    validates :item_id, presence: true
+    validates :user_id, presence: true
  
   # データを保存する処理
   def save

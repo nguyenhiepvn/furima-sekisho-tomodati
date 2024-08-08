@@ -28,12 +28,12 @@ class OrdersController < ApplicationController
   end
 
   def soldout_to_root
-    redirect_to root_path if @item.orders.exists?
+    redirect_to root_path if @item.order.present?
   end
 
 
   def order_address_params
-    params.require(:order_address).permit(:item_id, :postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token])
+    params.require(:order_address).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id],token: params[:token])
   end
 
   def set_item
